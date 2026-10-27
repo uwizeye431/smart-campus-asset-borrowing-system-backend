@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.auca.smartcampus.domain.Student;
 import com.auca.smartcampus.service.StudentService;
@@ -32,6 +33,11 @@ public class StudentController {
     @GetMapping(value = "/all")
     public ResponseEntity<List<Student>> getAllStudents() {
         return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/by-last-name")
+    public ResponseEntity<List<Student>> getStudentsByLastName(@RequestParam String lastName) {
+        return new ResponseEntity<>(studentService.getStudentsByLastName(lastName), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")

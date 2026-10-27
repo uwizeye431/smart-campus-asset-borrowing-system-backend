@@ -1,5 +1,6 @@
 package com.auca.smartcampus.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -38,6 +39,7 @@ public class BorrowRequestService {
         borrowRequest.setBorrowDate(updated.getBorrowDate());
         borrowRequest.setAssetName(updated.getAssetName());
         borrowRequest.setQuantity(updated.getQuantity());
+        borrowRequest.setStatus(updated.getStatus());
         borrowRequest.setStudent(updated.getStudent());
         borrowRequest.setCustodian(updated.getCustodian());
         borrowRequestRepo.save(borrowRequest);
@@ -50,5 +52,13 @@ public class BorrowRequestService {
         }
         borrowRequestRepo.deleteById(id);
         return "Borrow request deleted successfully";
+    }
+
+    public List<BorrowRequest> getBorrowRequestsByStatus(BorrowStatus status) {
+        return borrowRequestRepo.findByStatusOrderByBorrowDateAsc(status);
+    }
+
+    public List<BorrowRequest> getBorrowRequestsBetween(LocalDate start, LocalDate end) {
+        return borrowRequestRepo.findByBorrowDateBetweenOrderByBorrowDateAsc(start, end);
     }
 }

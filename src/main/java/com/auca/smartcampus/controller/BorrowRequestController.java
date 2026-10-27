@@ -1,5 +1,6 @@
 package com.auca.smartcampus.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auca.smartcampus.domain.BorrowRequest;
+import com.auca.smartcampus.domain.BorrowStatus;
 import com.auca.smartcampus.service.BorrowRequestService;
 
 @RestController
@@ -34,6 +37,18 @@ public class BorrowRequestController {
     @GetMapping(value = "/all")
     public ResponseEntity<List<BorrowRequest>> getAllBorrowRequests() {
         return new ResponseEntity<>(borrowRequestService.getAllBorrowRequests(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/by-status")
+    public ResponseEntity<List<BorrowRequest>> getBorrowRequestsByStatus(@RequestParam BorrowStatus status) {
+        return new ResponseEntity<>(borrowRequestService.getBorrowRequestsByStatus(status), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/between")
+    public ResponseEntity<List<BorrowRequest>> getBorrowRequestsBetween(@RequestParam String start, @RequestParam String end) {
+        LocalDate startDate = LocalDate.parse(start);
+        LocalDate endDate = LocalDate.parse(end);
+        return new ResponseEntity<>(borrowRequestService.getBorrowRequestsBetween(startDate, endDate), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
