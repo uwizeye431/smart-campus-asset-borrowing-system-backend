@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,14 +19,13 @@ import com.auca.smartcampus.service.CustodianService;
 
 @RestController
 @RequestMapping(value = "/api/custodians")
-public class CustodianController
- {
+public class CustodianController {
+
     @Autowired
     private CustodianService custodianService;
 
     @PostMapping(value = "/save")
-    public ResponseEntity<?> saveCustodian(@RequestBody Custodian custodian) 
-    {
+    public ResponseEntity<?> saveCustodian(@RequestBody Custodian custodian) {
         String message = custodianService.saveCustodian(custodian);
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
@@ -50,20 +50,42 @@ public class CustodianController
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<?> updateCustodian(@PathVariable UUID id, @RequestBody Custodian custodian) {
         String message = custodianService.updateCustodian(id, custodian);
-        if (message.equals("Custodian updated successfully")) 
-            {
+        if (message.equals("Custodian updated successfully")) {
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<?> deleteCustodian(@PathVariable UUID id) 
-    {
+    public ResponseEntity<?> deleteCustodian(@PathVariable UUID id) {
         String message = custodianService.deleteCustodian(id);
         if (message.equals("Custodian deleted successfully")) {
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping(value = "/{custodianId}/asset-types/{assetTypeId}")
+    public ResponseEntity<?> addAssetType(@PathVariable UUID custodianId, @PathVariable UUID assetTypeId) {
+        String message = custodianService.addAssetType(custodianId, assetTypeId);
+        if (message.equals("Asset type added to the custodian")) {
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+        if (message.equals("The custodian with that id does not exist") || message.equals("That asset type does not exist")) {
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+    }
+
+    @PatchMapping(value = "/{custodianId}/store")
+    public ResponseEntity<?> changeStore(@PathVariable UUID custodianId, @RequestParam int storeNumber) {
+        String message = custodianService.changeStore(custodianId, storeNumber);
+        if (message.equals("Store changed successfully")) {
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+        if (message.equals("The custodian with that id does not exist") || message.equals("The store with that storeNumber does not exist")) {
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(message, HttpStatus.CONFLICT);
     }
 }

@@ -17,6 +17,15 @@ public class BorrowRequestService {
     private BorrowRequestRepository borrowRequestRepo;
 
     public String saveBorrowRequest(BorrowRequest borrowRequest) {
+        if (borrowRequest.getBorrowDate().isBefore(LocalDate.now())) {
+            return "Borrow request date cannot be in the past";
+        }
+        if (borrowRequestRepo.existsByCustodianIdAndBorrowDateAndStatusNot(
+                borrowRequest.getCustodian().getId(),
+                borrowRequest.getBorrowDate(),
+                BorrowStatus.REJECTED)) {
+            return "Custodian already has a borrow request on that date";
+        }
         borrowRequest.setStatus(BorrowStatus.REQUESTED);
         borrowRequestRepo.save(borrowRequest);
         return "Borrow request saved successfully";
@@ -39,7 +48,6 @@ public class BorrowRequestService {
         borrowRequest.setBorrowDate(updated.getBorrowDate());
         borrowRequest.setAssetName(updated.getAssetName());
         borrowRequest.setQuantity(updated.getQuantity());
-        borrowRequest.setStatus(updated.getStatus());
         borrowRequest.setStudent(updated.getStudent());
         borrowRequest.setCustodian(updated.getCustodian());
         borrowRequestRepo.save(borrowRequest);
@@ -60,5 +68,28 @@ public class BorrowRequestService {
 
     public List<BorrowRequest> getBorrowRequestsBetween(LocalDate start, LocalDate end) {
         return borrowRequestRepo.findByBorrowDateBetweenOrderByBorrowDateAsc(start, end);
+    }
+
+    public String updateBorrowRequestStatus(UUID id, BorrowStatus newStatus) {
+        Optional<BorrowRequest> existing = borrowRequestRepo.findById(id);
+        if (existing.isEmpty()) {
+            return "The borrow request with that id does not exist";
+        }
+        BorrowRequest borrowRequest = existing.get();
+        BorrowStatus current = borrowRequest.getStatus();
+
+        boolean allowed = false;
+        if (current == BorrowStatus.REQUESTED && (newStatus == BorrowStatus.ISSUED || newStatus == BorrowStatus.REJECTED)) {
+            allowed = true;
+        }
+        if (current == BorrowStatus.ISSUED && (newStatus == BorrowStatus.RETURNED || newStatus == BorrowStatus.REJECTED)) {
+            allowed = true;
+        }
+        if (!allowed) {
+            return "Cannot change status from " + current + " to " + newStatus;
+        }
+        borrowRequest.setStatus(newStatus);
+        borrowRequestRepo.save(borrowRequest);
+        return "Borrow request status updated successfully";
     }
 }

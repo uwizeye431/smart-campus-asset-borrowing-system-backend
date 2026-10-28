@@ -275,6 +275,39 @@
         "header": [],
         "url": { "raw": "http://localhost:8082/api/students/of-custodian/e83fd065-97ee-4df7-b625-e4227de03ec9", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "students", "of-custodian", "e83fd065-97ee-4df7-b625-e4227de03ec9"] }
       }
+    },
+    {
+      "name": "D1",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8082/api/borrow-requests/save", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "borrow-requests", "save"] },
+        "body": { "mode": "raw", "raw": "{\n  \"borrowDate\": \"2026-11-30\",\n  \"assetName\": \"Dell Projector P2419H\",\n  \"quantity\": 1,\n  \"student\": { \"id\": \"9d5c4d93-2944-43e5-8cb1-e317f9a20e4b\" },\n  \"custodian\": { \"id\": \"e83fd065-97ee-4df7-b625-e4227de03ec9\" }\n}" }
+      }
+    },
+    {
+      "name": "D2",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": { "raw": "http://localhost:8082/api/borrow-requests/d8613882-e465-4725-a309-551fe7695bc3/status?status=ISSUED", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "borrow-requests", "d8613882-e465-4725-a309-551fe7695bc3", "status"], "query": [{ "key": "status", "value": "ISSUED" }] }
+      }
+    },
+    {
+      "name": "D3",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": { "raw": "http://localhost:8082/api/custodians/e83fd065-97ee-4df7-b625-e4227de03ec9/asset-types/6aa0ac10-2acd-4ce8-8895-edd01a780b24", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "e83fd065-97ee-4df7-b625-e4227de03ec9", "asset-types", "6aa0ac10-2acd-4ce8-8895-edd01a780b24"] }
+      }
+    },
+    {
+      "name": "D4",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": { "raw": "http://localhost:8082/api/custodians/e83fd065-97ee-4df7-b625-e4227de03ec9/store?storeNumber=4", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "e83fd065-97ee-4df7-b625-e4227de03ec9", "store"], "query": [{ "key": "storeNumber", "value": "4" }] }
+      }
     }
   ]
 }

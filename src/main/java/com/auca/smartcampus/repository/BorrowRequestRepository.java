@@ -15,4 +15,6 @@ public interface BorrowRequestRepository extends JpaRepository<BorrowRequest, UU
     List<BorrowRequest> findByStatusOrderByBorrowDateAsc(BorrowStatus status);
 
     List<BorrowRequest> findByBorrowDateBetweenOrderByBorrowDateAsc(LocalDate start, LocalDate end);
+
+    boolean existsByCustodianIdAndBorrowDateAndStatusNot(UUID custodianId, LocalDate borrowDate, BorrowStatus status);
 }
