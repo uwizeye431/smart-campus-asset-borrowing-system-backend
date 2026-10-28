@@ -35,6 +35,11 @@ public class StoreController {
         return new ResponseEntity<>(storeService.getAllStores(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/free")
+    public ResponseEntity<List<Store>> getFreeStores() {
+        return new ResponseEntity<>(storeService.getFreeStores(), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getStoreById(@PathVariable UUID id) {
         return storeService.getStoreById(id)

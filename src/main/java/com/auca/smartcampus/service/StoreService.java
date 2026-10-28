@@ -42,4 +42,7 @@ public class StoreService
         storeRepo.deleteById(id);
         return "Store deleted successfully";
     }
+    public List<Store> getFreeStores() {
+        return storeRepo.findFreeStores();
+    }
 }

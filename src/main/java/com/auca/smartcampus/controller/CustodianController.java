@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.auca.smartcampus.domain.Custodian;
 import com.auca.smartcampus.service.CustodianService;
@@ -32,6 +33,11 @@ public class CustodianController
     @GetMapping(value = "/all")
     public ResponseEntity<List<Custodian>> getAllCustodians() {
         return new ResponseEntity<>(custodianService.getAllCustodians(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/by-asset-type")
+    public ResponseEntity<List<Custodian>> getCustodiansByAssetType(@RequestParam String name) {
+        return new ResponseEntity<>(custodianService.getCustodiansByAssetType(name), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")

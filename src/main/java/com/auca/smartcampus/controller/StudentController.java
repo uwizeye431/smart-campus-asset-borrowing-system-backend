@@ -40,6 +40,15 @@ public class StudentController {
         return new ResponseEntity<>(studentService.getStudentsByLastName(lastName), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/of-custodian/{custodianId}")
+    public ResponseEntity<?> getStudentsOfCustodian(@PathVariable UUID custodianId) {
+        Object result = studentService.getStudentsOfCustodian(custodianId);
+        if (result instanceof String) {
+            return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable UUID id) {
         return studentService.getStudentById(id)

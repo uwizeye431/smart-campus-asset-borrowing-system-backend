@@ -34,6 +34,11 @@ public class AssetTypeController {
         return new ResponseEntity<>(assetTypeService.getAllAssetTypes(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/unused")
+    public ResponseEntity<List<AssetType>> getUnusedAssetTypes() {
+        return new ResponseEntity<>(assetTypeService.getUnusedAssetTypes(), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getAssetTypeById(@PathVariable UUID id) 
     {

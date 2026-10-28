@@ -43,4 +43,7 @@ public class AssetTypeService {
         assetTypeRepo.deleteById(id);
         return "Asset type deleted successfully";
     }
+    public List<AssetType> getUnusedAssetTypes() {
+        return assetTypeRepo.findUnusedAssetTypes();
+    }
 }

@@ -44,4 +44,8 @@ public class CustodianService
         custodianRepo.deleteById(id);
         return "Custodian deleted successfully";
     }
+
+    public List<Custodian> getCustodiansByAssetType(String name) {
+        return custodianRepo.findCustodiansByAssetTypeName(name);
+    }
 }

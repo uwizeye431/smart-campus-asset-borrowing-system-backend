@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.auca.smartcampus.domain.Student;
+import com.auca.smartcampus.repository.CustodianRepository;
 import com.auca.smartcampus.repository.StudentRepository;
 
 @Service
@@ -13,6 +14,9 @@ public class StudentService
 {
     @Autowired
     private StudentRepository studentRepo;
+
+    @Autowired
+    private CustodianRepository custodianRepo;
 
     public String saveStudent(Student student) {
         studentRepo.save(student);
@@ -51,5 +55,12 @@ public class StudentService
 
     public List<Student> getStudentsByLastName(String lastName) {
         return studentRepo.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+    }
+
+    public Object getStudentsOfCustodian(UUID custodianId) {
+        if (custodianRepo.findById(custodianId).isEmpty()) {
+            return "The custodian with that id does not exist";
+        }
+        return studentRepo.findStudentsOfCustodian(custodianId);
     }
 }

@@ -1,15 +1,15 @@
 {
   "info": {
-    "name": "Smart Campus Asset Borrowing System - Midterm",
-    "_postman_id": "smart-campus-asset-borrowing-system-midterm",
+    "name": "smart-campus-asset-borrowing-system-midterm",
+    "_postman_id": "smart-campus-midterm-collection",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "PART A - AssetType",
+      "name": "A2",
       "item": [
         {
-          "name": "POST Save AssetType",
+          "name": "POST /api/asset-types/save",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
@@ -18,7 +18,7 @@
           }
         },
         {
-          "name": "GET All AssetTypes",
+          "name": "GET /api/asset-types/all",
           "request": {
             "method": "GET",
             "header": [],
@@ -26,46 +26,41 @@
           }
         },
         {
-          "name": "GET AssetType By ID",
+          "name": "GET /api/asset-types/{id}",
           "request": {
             "method": "GET",
             "header": [],
-            "url": { "raw": "http://localhost:8082/api/asset-types/56586e68-0000-0000-0000-000000000000", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "asset-types", "56586e68-0000-0000-0000-000000000000"] }
+            "url": { "raw": "http://localhost:8082/api/asset-types/56586e68-32b6-42cd-8ac5-06b9e5ef63cf", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "asset-types", "56586e68-32b6-42cd-8ac5-06b9e5ef63cf"] }
           }
         },
         {
-          "name": "PUT Update AssetType",
+          "name": "PUT /api/asset-types/update/{id}",
           "request": {
             "method": "PUT",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "url": { "raw": "http://localhost:8082/api/asset-types/update/56586e68-0000-0000-0000-000000000000", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "asset-types", "update", "56586e68-0000-0000-0000-000000000000"] },
-            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Laptops Updated\"\n}" }
+            "url": { "raw": "http://localhost:8082/api/asset-types/update/56586e68-32b6-42cd-8ac5-06b9e5ef63cf", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "asset-types", "update", "56586e68-32b6-42cd-8ac5-06b9e5ef63cf"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Laptops\"\n}" }
           }
         },
         {
-          "name": "DELETE AssetType",
+          "name": "DELETE /api/asset-types/delete/{id}",
           "request": {
             "method": "DELETE",
             "header": [],
-            "url": { "raw": "http://localhost:8082/api/asset-types/delete/56586e68-0000-0000-0000-000000000000", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "asset-types", "delete", "56586e68-0000-0000-0000-000000000000"] }
+            "url": { "raw": "http://localhost:8082/api/asset-types/delete/56586e68-32b6-42cd-8ac5-06b9e5ef63cf", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "asset-types", "delete", "56586e68-32b6-42cd-8ac5-06b9e5ef63cf"] }
           }
-        }
-      ]
-    },
-    {
-      "name": "PART A - Store",
-      "item": [
+        },
         {
-          "name": "POST Save Store",
+          "name": "POST /api/stores/save",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "url": { "raw": "http://localhost:8082/api/stores/save", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "stores", "save"] },
-            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Store1\",\n  \"location\": \"Block A\"\n}" }
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Main Equipment Store\",\n  \"location\": \"Block A\"\n}" }
           }
         },
         {
-          "name": "GET All Stores",
+          "name": "GET /api/stores/all",
           "request": {
             "method": "GET",
             "header": [],
@@ -73,37 +68,74 @@
           }
         },
         {
-          "name": "GET Store By ID",
+          "name": "GET /api/stores/{id}",
           "request": {
             "method": "GET",
             "header": [],
-            "url": { "raw": "http://localhost:8082/api/stores/ef0f0a68-0000-0000-0000-000000000000", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "stores", "ef0f0a68-0000-0000-0000-000000000000"] }
+            "url": { "raw": "http://localhost:8082/api/stores/ef0f0a68-4064-4781-b584-6a9fcd5ad6ad", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "stores", "ef0f0a68-4064-4781-b584-6a9fcd5ad6ad"] }
           }
         },
         {
-          "name": "PUT Update Store",
+          "name": "PUT /api/stores/update/{id}",
           "request": {
             "method": "PUT",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "url": { "raw": "http://localhost:8082/api/stores/update/ef0f0a68-0000-0000-0000-000000000000", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "stores", "update", "ef0f0a68-0000-0000-0000-000000000000"] },
-            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Store1 Updated\",\n  \"location\": \"Block A\"\n}" }
+            "url": { "raw": "http://localhost:8082/api/stores/update/ef0f0a68-4064-4781-b584-6a9fcd5ad6ad", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "stores", "update", "ef0f0a68-4064-4781-b584-6a9fcd5ad6ad"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Main Equipment Store\",\n  \"location\": \"Block A\"\n}" }
           }
         },
         {
-          "name": "DELETE Store",
+          "name": "DELETE /api/stores/delete/{id}",
           "request": {
             "method": "DELETE",
             "header": [],
-            "url": { "raw": "http://localhost:8082/api/stores/delete/ef0f0a68-0000-0000-0000-000000000000", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "stores", "delete", "ef0f0a68-0000-0000-0000-000000000000"] }
+            "url": { "raw": "http://localhost:8082/api/stores/delete/ef0f0a68-4064-4781-b584-6a9fcd5ad6ad", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "stores", "delete", "ef0f0a68-4064-4781-b584-6a9fcd5ad6ad"] }
           }
-        }
-      ]
-    },
-    {
-      "name": "PART A - Student",
-      "item": [
+        },
         {
-          "name": "POST Save Student",
+          "name": "POST /api/custodians/save",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "http://localhost:8082/api/custodians/save", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Jean\",\n  \"lastName\": \"Habimana\",\n  \"store\": { \"id\": \"ef0f0a68-4064-4781-b584-6a9fcd5ad6ad\" },\n  \"assetTypes\": [\n    { \"id\": \"56586e68-32b6-42cd-8ac5-06b9e5ef63cf\" }\n  ]\n}" }
+          }
+        },
+        {
+          "name": "GET /api/custodians/all",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:8082/api/custodians/all", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "all"] }
+          }
+        },
+        {
+          "name": "GET /api/custodians/{id}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:8082/api/custodians/e83fd065-97ee-4df7-b625-e4227de03ec9", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "e83fd065-97ee-4df7-b625-e4227de03ec9"] }
+          }
+        },
+        {
+          "name": "PUT /api/custodians/update/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "http://localhost:8082/api/custodians/update/e83fd065-97ee-4df7-b625-e4227de03ec9", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "update", "e83fd065-97ee-4df7-b625-e4227de03ec9"] },
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Jean\",\n  \"lastName\": \"Habimana\",\n  \"store\": { \"id\": \"ef0f0a68-4064-4781-b584-6a9fcd5ad6ad\" },\n  \"assetTypes\": [\n    { \"id\": \"56586e68-32b6-42cd-8ac5-06b9e5ef63cf\" }\n  ]\n}" }
+          }
+        },
+        {
+          "name": "DELETE /api/custodians/delete/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "http://localhost:8082/api/custodians/delete/e83fd065-97ee-4df7-b625-e4227de03ec9", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "delete", "e83fd065-97ee-4df7-b625-e4227de03ec9"] }
+          }
+        },
+        {
+          "name": "POST /api/students/save",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
@@ -112,7 +144,7 @@
           }
         },
         {
-          "name": "GET All Students",
+          "name": "GET /api/students/all",
           "request": {
             "method": "GET",
             "header": [],
@@ -120,7 +152,7 @@
           }
         },
         {
-          "name": "GET Student By ID",
+          "name": "GET /api/students/{id}",
           "request": {
             "method": "GET",
             "header": [],
@@ -128,76 +160,24 @@
           }
         },
         {
-          "name": "PUT Update Student",
+          "name": "PUT /api/students/update/{id}",
           "request": {
             "method": "PUT",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "url": { "raw": "http://localhost:8082/api/students/update/9d5c4d93-2944-43e5-8cb1-e317f9a20e4b", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "students", "update", "9d5c4d93-2944-43e5-8cb1-e317f9a20e4b"] },
-            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Kevin\",\n  \"lastName\": \"Uwizeye\",\n  \"regNumber\": \"STU001\",\n  \"faculty\": \"Engineering Updated\"\n}" }
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Kevin\",\n  \"lastName\": \"Uwizeye\",\n  \"regNumber\": \"STU001\",\n  \"faculty\": \"Engineering\"\n}" }
           }
         },
         {
-          "name": "DELETE Student",
+          "name": "DELETE /api/students/delete/{id}",
           "request": {
             "method": "DELETE",
             "header": [],
             "url": { "raw": "http://localhost:8082/api/students/delete/9d5c4d93-2944-43e5-8cb1-e317f9a20e4b", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "students", "delete", "9d5c4d93-2944-43e5-8cb1-e317f9a20e4b"] }
           }
-        }
-      ]
-    },
-    {
-      "name": "PART A - Custodian",
-      "item": [
-        {
-          "name": "POST Save Custodian",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "url": { "raw": "http://localhost:8082/api/custodians/save", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "save"] },
-            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Jean\",\n  \"lastName\": \"Habimana\",\n  \"store\": { \"id\": \"ef0f0a68-0000-0000-0000-000000000000\" },\n  \"assetTypes\": [\n    { \"id\": \"56586e68-0000-0000-0000-000000000000\" }\n  ]\n}" }
-          }
         },
         {
-          "name": "GET All Custodians",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": { "raw": "http://localhost:8082/api/custodians/all", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "all"] }
-          }
-        },
-        {
-          "name": "GET Custodian By ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": { "raw": "http://localhost:8082/api/custodians/e83fd065-97ee-4df7-b625-e4227de03ec9", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "e83fd065-97ee-4df7-b625-e4227de03ec9"] }
-          }
-        },
-        {
-          "name": "PUT Update Custodian",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "url": { "raw": "http://localhost:8082/api/custodians/update/e83fd065-97ee-4df7-b625-e4227de03ec9", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "update", "e83fd065-97ee-4df7-b625-e4227de03ec9"] },
-            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Jean\",\n  \"lastName\": \"Habimana\",\n  \"store\": { \"id\": \"ef0f0a68-0000-0000-0000-000000000000\" },\n  \"assetTypes\": [\n    { \"id\": \"56586e68-0000-0000-0000-000000000000\" }\n  ]\n}" }
-          }
-        },
-        {
-          "name": "DELETE Custodian",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": { "raw": "http://localhost:8082/api/custodians/delete/e83fd065-97ee-4df7-b625-e4227de03ec9", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "delete", "e83fd065-97ee-4df7-b625-e4227de03ec9"] }
-          }
-        }
-      ]
-    },
-    {
-      "name": "PART A - BorrowRequest",
-      "item": [
-        {
-          "name": "POST Save BorrowRequest",
+          "name": "POST /api/borrow-requests/save",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
@@ -206,7 +186,7 @@
           }
         },
         {
-          "name": "GET All BorrowRequests",
+          "name": "GET /api/borrow-requests/all",
           "request": {
             "method": "GET",
             "header": [],
@@ -214,7 +194,7 @@
           }
         },
         {
-          "name": "GET BorrowRequest By ID",
+          "name": "GET /api/borrow-requests/{id}",
           "request": {
             "method": "GET",
             "header": [],
@@ -222,16 +202,16 @@
           }
         },
         {
-          "name": "PUT Update BorrowRequest",
+          "name": "PUT /api/borrow-requests/update/{id}",
           "request": {
             "method": "PUT",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "url": { "raw": "http://localhost:8082/api/borrow-requests/update/bbca9c3d-df97-4bee-b221-55d5f557613d", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "borrow-requests", "update", "bbca9c3d-df97-4bee-b221-55d5f557613d"] },
-            "body": { "mode": "raw", "raw": "{\n  \"borrowDate\": \"2026-10-25\",\n  \"assetName\": \"Dell Latitude 5420\",\n  \"quantity\": 2,\n  \"student\": { \"id\": \"9d5c4d93-2944-43e5-8cb1-e317f9a20e4b\" },\n  \"custodian\": { \"id\": \"e83fd065-97ee-4df7-b625-e4227de03ec9\" }\n}" }
+            "body": { "mode": "raw", "raw": "{\n  \"borrowDate\": \"2026-10-25\",\n  \"assetName\": \"Dell Latitude 5420\",\n  \"quantity\": 1,\n  \"student\": { \"id\": \"9d5c4d93-2944-43e5-8cb1-e317f9a20e4b\" },\n  \"custodian\": { \"id\": \"e83fd065-97ee-4df7-b625-e4227de03ec9\" }\n}" }
           }
         },
         {
-          "name": "DELETE BorrowRequest",
+          "name": "DELETE /api/borrow-requests/delete/{id}",
           "request": {
             "method": "DELETE",
             "header": [],
@@ -241,160 +221,60 @@
       ]
     },
     {
-      "name": "PART B - B1: Students by Last Name",
-      "item": [
-        {
-          "name": "B1 - GET Students by lastName=Uwizeye",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:8082/api/students/by-last-name?lastName=Uwizeye",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8082",
-              "path": ["api", "students", "by-last-name"],
-              "query": [{ "key": "lastName", "value": "Uwizeye" }]
-            }
-          }
-        },
-        {
-          "name": "B1 - GET Students by lastName=uwizeye (lowercase)",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:8082/api/students/by-last-name?lastName=uwizeye",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8082",
-              "path": ["api", "students", "by-last-name"],
-              "query": [{ "key": "lastName", "value": "uwizeye" }]
-            }
-          }
-        },
-        {
-          "name": "B1 - GET Students by lastName=Nkurunziza",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:8082/api/students/by-last-name?lastName=Nkurunziza",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8082",
-              "path": ["api", "students", "by-last-name"],
-              "query": [{ "key": "lastName", "value": "Nkurunziza" }]
-            }
-          }
-        }
-      ]
+      "name": "B1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8082/api/students/by-last-name?lastName=Uwizeye", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "students", "by-last-name"], "query": [{ "key": "lastName", "value": "Uwizeye" }] }
+      }
     },
     {
-      "name": "PART B - B2: BorrowRequests by Status",
-      "item": [
-        {
-          "name": "B2 - GET BorrowRequests by status=REQUESTED",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:8082/api/borrow-requests/by-status?status=REQUESTED",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8082",
-              "path": ["api", "borrow-requests", "by-status"],
-              "query": [{ "key": "status", "value": "REQUESTED" }]
-            }
-          }
-        },
-        {
-          "name": "B2 - GET BorrowRequests by status=ISSUED",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:8082/api/borrow-requests/by-status?status=ISSUED",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8082",
-              "path": ["api", "borrow-requests", "by-status"],
-              "query": [{ "key": "status", "value": "ISSUED" }]
-            }
-          }
-        },
-        {
-          "name": "B2 - GET BorrowRequests by status=RETURNED",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:8082/api/borrow-requests/by-status?status=RETURNED",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8082",
-              "path": ["api", "borrow-requests", "by-status"],
-              "query": [{ "key": "status", "value": "RETURNED" }]
-            }
-          }
-        },
-        {
-          "name": "B2 - GET BorrowRequests by status=REJECTED",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:8082/api/borrow-requests/by-status?status=REJECTED",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8082",
-              "path": ["api", "borrow-requests", "by-status"],
-              "query": [{ "key": "status", "value": "REJECTED" }]
-            }
-          }
-        }
-      ]
+      "name": "B2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8082/api/borrow-requests/by-status?status=REQUESTED", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "borrow-requests", "by-status"], "query": [{ "key": "status", "value": "REQUESTED" }] }
+      }
     },
     {
-      "name": "PART B - B3: BorrowRequests Between Dates",
-      "item": [
-        {
-          "name": "B3 - GET BorrowRequests Oct 2026",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:8082/api/borrow-requests/between?start=2026-10-01&end=2026-10-31",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8082",
-              "path": ["api", "borrow-requests", "between"],
-              "query": [
-                { "key": "start", "value": "2026-10-01" },
-                { "key": "end", "value": "2026-10-31" }
-              ]
-            }
-          }
-        },
-        {
-          "name": "B3 - GET BorrowRequests Oct 10-15 only",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:8082/api/borrow-requests/between?start=2026-10-10&end=2026-10-15",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8082",
-              "path": ["api", "borrow-requests", "between"],
-              "query": [
-                { "key": "start", "value": "2026-10-10" },
-                { "key": "end", "value": "2026-10-15" }
-              ]
-            }
-          }
-        }
-      ]
+      "name": "B3",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8082/api/borrow-requests/between?start=2026-10-01&end=2026-10-31", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "borrow-requests", "between"], "query": [{ "key": "start", "value": "2026-10-01" }, { "key": "end", "value": "2026-10-31" }] }
+      }
+    },
+    {
+      "name": "C1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8082/api/custodians/by-asset-type?name=laptops", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "by-asset-type"], "query": [{ "key": "name", "value": "laptops" }] }
+      }
+    },
+    {
+      "name": "C2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8082/api/stores/free", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "stores", "free"] }
+      }
+    },
+    {
+      "name": "C3",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8082/api/asset-types/unused", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "asset-types", "unused"] }
+      }
+    },
+    {
+      "name": "C4",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8082/api/students/of-custodian/e83fd065-97ee-4df7-b625-e4227de03ec9", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "students", "of-custodian", "e83fd065-97ee-4df7-b625-e4227de03ec9"] }
+      }
     }
   ]
 }
