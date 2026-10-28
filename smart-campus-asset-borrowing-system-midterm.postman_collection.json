@@ -308,6 +308,108 @@
         "header": [],
         "url": { "raw": "http://localhost:8082/api/custodians/e83fd065-97ee-4df7-b625-e4227de03ec9/store?storeNumber=4", "protocol": "http", "host": ["localhost"], "port": "8082", "path": ["api", "custodians", "e83fd065-97ee-4df7-b625-e4227de03ec9", "store"], "query": [{ "key": "storeNumber", "value": "4" }] }
       }
+    },
+    {
+      "name": "E1 - Write return inspection (201 success)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "http://localhost:8082/api/return-inspections/save?borrowRequestId=69d0180a-d260-4ad7-bb83-af23dcef3b21",
+          "protocol": "http", "host": ["localhost"], "port": "8082",
+          "path": ["api", "return-inspections", "save"],
+          "query": [{ "key": "borrowRequestId", "value": "69d0180a-d260-4ad7-bb83-af23dcef3b21" }]
+        },
+        "body": { "mode": "raw", "raw": "{\n  \"itemName\": \"Dell Latitude 5420\",\n  \"condition\": \"Good, charger included\",\n  \"penaltyRwf\": 0\n}" }
+      }
+    },
+    {
+      "name": "E1 - Write return inspection (400 - not RETURNED)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "http://localhost:8082/api/return-inspections/save?borrowRequestId=1aa86260-6956-44f6-b83c-546b8645ff2d",
+          "protocol": "http", "host": ["localhost"], "port": "8082",
+          "path": ["api", "return-inspections", "save"],
+          "query": [{ "key": "borrowRequestId", "value": "1aa86260-6956-44f6-b83c-546b8645ff2d" }]
+        },
+        "body": { "mode": "raw", "raw": "{\n  \"itemName\": \"Dell Latitude 5420\",\n  \"condition\": \"Good\",\n  \"penaltyRwf\": 0\n}" }
+      }
+    },
+    {
+      "name": "E1 - Write return inspection (404 - borrow request not found)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "http://localhost:8082/api/return-inspections/save?borrowRequestId=00000000-0000-0000-0000-000000000000",
+          "protocol": "http", "host": ["localhost"], "port": "8082",
+          "path": ["api", "return-inspections", "save"],
+          "query": [{ "key": "borrowRequestId", "value": "00000000-0000-0000-0000-000000000000" }]
+        },
+        "body": { "mode": "raw", "raw": "{\n  \"itemName\": \"Dell Latitude 5420\",\n  \"condition\": \"Good\",\n  \"penaltyRwf\": 0\n}" }
+      }
+    },
+    {
+      "name": "E2 - Return inspection history of student (200 - with results)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/api/return-inspections/student/27477",
+          "protocol": "http", "host": ["localhost"], "port": "8082",
+          "path": ["api", "return-inspections", "student", "27477"]
+        }
+      }
+    },
+    {
+      "name": "E2 - Return inspection history of student (200 - empty list)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/api/return-inspections/student/27481",
+          "protocol": "http", "host": ["localhost"], "port": "8082",
+          "path": ["api", "return-inspections", "student", "27481"]
+        }
+      }
+    },
+    {
+      "name": "E3 - Delete return inspection (200 success)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/api/return-inspections/delete/1e40ba38-c1f7-4889-a88b-bc367577e15f",
+          "protocol": "http", "host": ["localhost"], "port": "8082",
+          "path": ["api", "return-inspections", "delete", "1e40ba38-c1f7-4889-a88b-bc367577e15f"]
+        }
+      }
+    },
+    {
+      "name": "E3 - Delete return inspection (404 - not found)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/api/return-inspections/delete/00000000-0000-0000-0000-000000000000",
+          "protocol": "http", "host": ["localhost"], "port": "8082",
+          "path": ["api", "return-inspections", "delete", "00000000-0000-0000-0000-000000000000"]
+        }
+      }
+    },
+    {
+      "name": "E3 - Delete borrow request (409 - has return inspections)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/api/borrow-requests/delete/69d0180a-d260-4ad7-bb83-af23dcef3b21",
+          "protocol": "http", "host": ["localhost"], "port": "8082",
+          "path": ["api", "borrow-requests", "delete", "69d0180a-d260-4ad7-bb83-af23dcef3b21"]
+        }
+      }
     }
   ]
 }

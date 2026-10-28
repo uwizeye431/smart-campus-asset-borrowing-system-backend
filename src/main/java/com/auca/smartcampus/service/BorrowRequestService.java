@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 import com.auca.smartcampus.domain.BorrowRequest;
 import com.auca.smartcampus.domain.BorrowStatus;
 import com.auca.smartcampus.repository.BorrowRequestRepository;
+import com.auca.smartcampus.repository.ReturnInspectionRepository;
 
 @Service
 public class BorrowRequestService {
 
     @Autowired
     private BorrowRequestRepository borrowRequestRepo;
+
+    @Autowired
+    private ReturnInspectionRepository returnInspectionRepo;
 
     public String saveBorrowRequest(BorrowRequest borrowRequest) {
         if (borrowRequest.getBorrowDate().isBefore(LocalDate.now())) {
@@ -55,8 +59,12 @@ public class BorrowRequestService {
     }
 
     public String deleteBorrowRequest(UUID id) {
-        if (borrowRequestRepo.findById(id).isEmpty()) {
+        Optional<BorrowRequest> existing = borrowRequestRepo.findById(id);
+        if (existing.isEmpty()) {
             return "The borrow request with that id does not exist";
+        }
+        if (returnInspectionRepo.existsByBorrowRequest(existing.get())) {
+            return "That borrow request has return inspections, delete them first";
         }
         borrowRequestRepo.deleteById(id);
         return "Borrow request deleted successfully";
