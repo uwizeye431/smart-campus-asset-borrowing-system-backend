@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -95,6 +99,18 @@ public class BorrowRequestController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping(value = "/page")
+    public ResponseEntity<Page<BorrowRequest>> getBorrowRequestsPage(
+            @RequestParam int page,
+            @RequestParam int size,
+            @RequestParam String sort) {
+        String[] sortParts = sort.split(",");
+        Sort.Direction direction = sortParts.length > 1 && sortParts[1].equalsIgnoreCase("desc")
+                ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortParts[0]));
+        return new ResponseEntity<>(borrowRequestService.getBorrowRequestsPage(pageable), HttpStatus.OK);
     }
 
     @GetMapping(value = "/stats/by-status")

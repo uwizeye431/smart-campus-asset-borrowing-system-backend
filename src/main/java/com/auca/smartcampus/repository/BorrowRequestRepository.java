@@ -9,11 +9,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import com.auca.smartcampus.domain.BorrowRequest;
 import com.auca.smartcampus.domain.BorrowStatus;
 
 @Repository
 public interface BorrowRequestRepository extends JpaRepository<BorrowRequest, UUID> {
+
+    long countByBorrowDate(LocalDate borrowDate);
+
+    long countByStatus(BorrowStatus status);
+
+    Page<BorrowRequest> findAll(Pageable pageable);
 
     List<BorrowRequest> findByStatusOrderByBorrowDateAsc(BorrowStatus status);
 

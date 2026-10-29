@@ -438,6 +438,68 @@
           ]
         }
       }
+    },
+    {
+      "name": "+5 Dashboard",
+      "item": [
+        {
+          "name": "+5 Dashboard - GET /api/dashboard/summary (200 success)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/dashboard/summary",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["api", "dashboard", "summary"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "+5 Pagination",
+      "item": [
+        {
+          "name": "+5 Pagination - GET /api/borrow-requests/page (200 page 0 size 5 desc)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/borrow-requests/page?page=0&size=5&sort=borrowDate,desc",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["api", "borrow-requests", "page"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "5" },
+                { "key": "sort", "value": "borrowDate,desc" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "+5 Pagination - GET /api/borrow-requests/page (200 page 1 size 3 asc)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/borrow-requests/page?page=1&size=3&sort=borrowDate,asc",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["api", "borrow-requests", "page"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "size", "value": "3" },
+                { "key": "sort", "value": "borrowDate,asc" }
+              ]
+            }
+          }
+        }
+      ]
     }
   ]
 }
