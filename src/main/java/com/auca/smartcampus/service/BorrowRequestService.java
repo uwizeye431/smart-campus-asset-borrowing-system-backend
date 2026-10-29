@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.auca.smartcampus.domain.BorrowRequest;
 import com.auca.smartcampus.domain.BorrowStatus;
 import com.auca.smartcampus.repository.BorrowRequestRepository;
@@ -99,5 +100,15 @@ public class BorrowRequestService {
         borrowRequest.setStatus(newStatus);
         borrowRequestRepo.save(borrowRequest);
         return "Borrow request status updated successfully";
+    }
+
+    public List<Object[]> getBorrowRequestsCountByStatus() {
+        return borrowRequestRepo.countBorrowRequestsByStatus();
+    }
+
+    @Transactional
+    public String cancelBorrowRequestsOfDay(UUID custodianId, LocalDate date) {
+        int count = borrowRequestRepo.cancelBorrowRequestsOfDay(custodianId, date, BorrowStatus.REJECTED, BorrowStatus.RETURNED);
+        return count + " borrow requests cancelled";
     }
 }

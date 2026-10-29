@@ -96,4 +96,16 @@ public class BorrowRequestController {
         }
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
+
+    @GetMapping(value = "/stats/by-status")
+    public ResponseEntity<List<Object[]>> getBorrowRequestsCountByStatus() {
+        return new ResponseEntity<>(borrowRequestService.getBorrowRequestsCountByStatus(), HttpStatus.OK);
+    }
+
+    @PatchMapping(value = "/cancel-day")
+    public ResponseEntity<?> cancelBorrowRequestsOfDay(@RequestParam UUID custodianId, @RequestParam String date) {
+        LocalDate day = LocalDate.parse(date);
+        String message = borrowRequestService.cancelBorrowRequestsOfDay(custodianId, day);
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
 }

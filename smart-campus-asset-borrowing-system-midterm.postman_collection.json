@@ -410,6 +410,34 @@
           "path": ["api", "borrow-requests", "delete", "69d0180a-d260-4ad7-bb83-af23dcef3b21"]
         }
       }
+    },
+    {
+      "name": "F1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/api/borrow-requests/stats/by-status",
+          "protocol": "http", "host": ["localhost"], "port": "8082",
+          "path": ["api", "borrow-requests", "stats", "by-status"]
+        }
+      }
+    },
+    {
+      "name": "F2",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/api/borrow-requests/cancel-day?custodianId=fac0a5cb-8067-4f60-a75a-3250e897ba79&date=2026-10-20",
+          "protocol": "http", "host": ["localhost"], "port": "8082",
+          "path": ["api", "borrow-requests", "cancel-day"],
+          "query": [
+            { "key": "custodianId", "value": "fac0a5cb-8067-4f60-a75a-3250e897ba79" },
+            { "key": "date", "value": "2026-10-20" }
+          ]
+        }
+      }
     }
   ]
 }
